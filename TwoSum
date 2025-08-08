@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int n = nums.size();
+        vector<pair<int, int>> num;
+        for (int i = 0; i < n; i++) {
+            num.push_back({nums[i], i});
+        }
+        sort(num.begin(), num.end());
+        int i = 0, j = n - 1;
+        while (i < j) {
+            int sum = num[i].first + num[j].first;
+            if (sum == target) {
+                return {num[i].second, num[j].second};
+            } else if (sum < target) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+        return {num[i].second, num[j].second};
+    }
+};
